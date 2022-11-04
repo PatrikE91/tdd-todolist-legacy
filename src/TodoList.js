@@ -63,5 +63,20 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+
+  setToCompleted(id) {
+    const item = this.items.find((item) => item.id === id)
+    item.status = 'completed'
+    if (item === undefined) throw new Error('Item not found')
+    return item
+  }
+
+  editText(id) {
+    const item = this.items.find((item) => item.id === id)
+    item.text =
+      'turn the heating off! you know how expensive it is? get a jumper!'
+    if (item === undefined) throw new Error('Item not found')
+    return item
+  }
 }
 module.exports = TodoList

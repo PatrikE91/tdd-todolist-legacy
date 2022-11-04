@@ -203,4 +203,30 @@ describe('TodoList', () => {
     // verify
     expect(search).toEqual(result)
   })
+
+  it('should change the status of the selected item', () => {
+    // set up
+    todoList.create('turn the heating on!')
+
+    // verify
+    expect(todoList.setToCompleted(1)).toEqual({
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'completed',
+      date: new Date().toDateString()
+    })
+  })
+
+  it('should edit the text of the selected item', () => {
+    // set up
+    todoList.create('turn the heating on!')
+
+    // verify
+    expect(todoList.editText(1)).toEqual({
+      id: 1,
+      text: 'turn the heating off! you know how expensive it is? get a jumper!',
+      status: 'incomplete',
+      date: new Date().toDateString()
+    })
+  })
 })
